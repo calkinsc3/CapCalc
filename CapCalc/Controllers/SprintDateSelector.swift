@@ -38,6 +38,9 @@ class SprintDateSelector: UIViewController {
             print("send an alert")
         case .authorized:
             print("proceed with caution")
+            //call function to find Work calendar
+            self.findWorkCalendar()
+            
         case .notDetermined:
             self.eventStore?.requestAccess(to: .event, completion: { (allowed, error) in
                 if error == nil {
@@ -52,8 +55,36 @@ class SprintDateSelector: UIViewController {
         }
     }
     
-
-    /*
+    private func findWorkCalendar() {
+        
+        guard let eventStore = self.eventStore else {
+            return
+        }
+        
+        var workEvents: [EKEvent]?
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        //create start and end dates
+        if let startDate = dateFormatter.date(from: "2017-07-05"),
+            let endDate = dateFormatter.date(from: "2017-07-12"),
+            let workCalendar = eventStore.calendar(withIdentifier: "Work") {
+            
+            let eventPredicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [workCalendar])
+            
+            workEvents = eventStore.events(matching: eventPredicate)
+            if let returnedEvents = workEvents {
+                print("workEvent count = \(returnedEvents.count)")
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -61,6 +92,5 @@ class SprintDateSelector: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
