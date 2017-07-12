@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		945E9DFE1F13934C00110FDF /* CalendarSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E9DFD1F13934C00110FDF /* CalendarSelector.swift */; };
+		945E9E001F13962400110FDF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E9DFF1F13962400110FDF /* Extensions.swift */; };
 		9465BD7A1F124BF4001C7E5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465BD791F124BF4001C7E5A /* AppDelegate.swift */; };
 		9465BD811F124BF4001C7E5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9465BD7F1F124BF4001C7E5A /* Main.storyboard */; };
 		9465BD831F124BF4001C7E5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9465BD821F124BF4001C7E5A /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		945E9DFD1F13934C00110FDF /* CalendarSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSelector.swift; sourceTree = "<group>"; };
+		945E9DFF1F13962400110FDF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9465BD761F124BF4001C7E5A /* CapCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9465BD791F124BF4001C7E5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9465BD801F124BF4001C7E5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9465BD791F124BF4001C7E5A /* AppDelegate.swift */,
+				945E9DFF1F13962400110FDF /* Extensions.swift */,
 				9465BD871F124BF4001C7E5A /* Info.plist */,
 				9465BDB21F124E05001C7E5A /* Controllers */,
 				9465BDAC1F124D72001C7E5A /* View */,
@@ -150,6 +155,7 @@
 		9465BDB21F124E05001C7E5A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				945E9DFD1F13934C00110FDF /* CalendarSelector.swift */,
 				9465BDAE1F124DCA001C7E5A /* SprintDateSelector.swift */,
 				9465BDB31F124E59001C7E5A /* CapacityResultsController.swift */,
 			);
@@ -224,6 +230,7 @@
 				TargetAttributes = {
 					9465BD751F124BF4001C7E5A = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0830;
 					};
 					9465BD8B1F124BF4001C7E5A = {
 						CreatedOnToolsVersion = 9.0;
@@ -287,6 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				945E9E001F13962400110FDF /* Extensions.swift in Sources */,
+				945E9DFE1F13934C00110FDF /* CalendarSelector.swift in Sources */,
 				9465BDAF1F124DCA001C7E5A /* SprintDateSelector.swift in Sources */,
 				9465BD7A1F124BF4001C7E5A /* AppDelegate.swift in Sources */,
 				9465BDB41F124E59001C7E5A /* CapacityResultsController.swift in Sources */,
@@ -459,7 +468,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.c3.CapCalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -474,7 +483,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.c3.CapCalc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -560,6 +569,7 @@
 				9465BDA21F124BF4001C7E5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9465BDA31F124BF4001C7E5A /* Build configuration list for PBXNativeTarget "CapCalcTests" */ = {
 			isa = XCConfigurationList;
@@ -568,6 +578,7 @@
 				9465BDA51F124BF4001C7E5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9465BDA61F124BF4001C7E5A /* Build configuration list for PBXNativeTarget "CapCalcUITests" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +587,7 @@
 				9465BDA81F124BF4001C7E5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

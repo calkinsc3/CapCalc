@@ -11,73 +11,42 @@ import EventKit
 
 class SprintDateSelector: UIViewController {
     
-    var eventStore: EKEventStore?
-    var isAcessToEventStoreGranted = false
+    var selectedCalendar : EKCalendar?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //get permission to use the event store for the calendar data
-        self.eventStore = EKEventStore()
-        self.updateAuthorizationStatusToAccessEventStore()
+        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func updateAuthorizationStatusToAccessEventStore() {
-        
-        let authorizationStatus = EKEventStore.authorizationStatus(for: .event)
-        
-        switch authorizationStatus {
-        case .denied:
-            print("send an alert")
-        case .restricted :
-            print("send an alert")
-        case .authorized:
-            print("proceed with caution")
-            //call function to find Work calendar
-            self.findWorkCalendar()
-            
-        case .notDetermined:
-            self.eventStore?.requestAccess(to: .event, completion: { (allowed, error) in
-                if error == nil {
-                    self.isAcessToEventStoreGranted = allowed
-                    if allowed {
-                        print("We have permission")
-                    } else {
-                        print("Boo...We do not have permission")
-                    }
-                }
-            })
-        }
-    }
     
-    private func findWorkCalendar() {
+    fileprivate func findWorkCalendar() {
         
-        guard let eventStore = self.eventStore else {
+        guard let givenCalendar = self.selectedCalendar else {
             return
         }
         
-        var workEvents: [EKEvent]?
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        //create start and end dates
-        if let startDate = dateFormatter.date(from: "2017-07-05"),
-            let endDate = dateFormatter.date(from: "2017-07-12"),
-            let workCalendar = eventStore.calendar(withIdentifier: "Work") {
-            
-            let eventPredicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [workCalendar])
-            
-            workEvents = eventStore.events(matching: eventPredicate)
-            if let returnedEvents = workEvents {
-                print("workEvent count = \(returnedEvents.count)")
-            }
-        }
+//        var workEvents: [EKEvent]?
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        
+//        //create start and end dates
+//        if let startDate = dateFormatter.date(from: "2017-07-05"),
+//            let endDate = dateFormatter.date(from: "2017-07-12"),
+//            let workCalendar = eventStore.calendar(withIdentifier: "Work") {
+//            
+//            let eventPredicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: [workCalendar])
+//            
+//            workEvents = eventStore.events(matching: eventPredicate)
+//            if let returnedEvents = workEvents {
+//                print("workEvent count = \(returnedEvents.count)")
+//            }
+//        }
         
         
     }
