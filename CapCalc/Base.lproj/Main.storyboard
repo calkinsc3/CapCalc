@@ -276,6 +276,11 @@
                                 <constraint firstItem="Bmc-Qd-nbe" firstAttribute="leading" secondItem="DVs-AR-5XI" secondAttribute="leadingMargin" id="obO-Wp-RRf"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="kOU-53-Lb6">
+                            <rect key="frame" x="0.0" y="193.5" width="375" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarCell" textLabel="uo6-xp-EJd" rowHeight="60" style="IBUITableViewCellStyleDefault" id="o40-cB-pGY">
                                 <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
@@ -304,6 +309,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="rSG-Gm-uZL"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="kOU-53-Lb6" id="IhF-Ri-Izt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5h-Yu-sa9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

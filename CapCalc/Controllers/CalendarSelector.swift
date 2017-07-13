@@ -17,7 +17,9 @@ class CalendarSelector: UITableViewController {
     
     var calendars: [EKCalendar]?
 
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,8 +75,7 @@ class CalendarSelector: UITableViewController {
             self.requestAccessToCalendars()
         case .authorized:
             //Load the calendars for selection
-            self.loadCalendars()
-            self.tableView.reloadData()
+            self.reloadView()
         case .restricted, .denied:
             //we need permission to the calendars
             self.requestAccessToCalendars()
@@ -88,13 +89,21 @@ class CalendarSelector: UITableViewController {
             if error == nil {
                 self.isAcessToEventStoreGranted = allowed
                 if allowed {
-                    self.loadCalendars()
-                    self.tableView.reloadData()
+                    self.reloadView()
                 } else {
                     print("Boo...We do not have permission")
                 }
             }
         })
+    }
+    
+    fileprivate func reloadView() {
+        self.loadCalendars()
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = false
+            self.tableView.reloadData()
+            self.activityIndicator.isHidden = true
+        }
     }
     
     fileprivate func loadCalendars() {

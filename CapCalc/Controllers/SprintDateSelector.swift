@@ -84,16 +84,16 @@ class SprintDateSelector: UIViewController {
             return
         }
         
-        var workEvents: [EKEvent]?
-        
         if let givenStartDate = self.selectedStartDate, let givenEndDate = self.selectedEndDate {
             let eventPredicate = EKEventStore().predicateForEvents(withStart: givenStartDate, end: givenEndDate, calendars: [givenCalendar])
             let workEvents = EKEventStore().events(matching: eventPredicate)
-            print("Number of event: \(workEvents.count)")
+            var totalHoursInMeetings = 0
+            for event in workEvents {
+                totalHoursInMeetings += event.endDate.hours(fromDate: event.startDate)
+            }
+            print("Total Hours in meetings = \(totalHoursInMeetings)")
         }
     }
-    
-    
     
     // MARK: - Navigation
 
@@ -113,4 +113,14 @@ extension Date {
     func subtractDays(numberOfDays: Int) -> Date? {
         return Calendar.current.date(byAdding: .day, value: numberOfDays, to: self)
     }
+    
+    func hours(fromDate: Date) -> Int {
+        return Calendar.current.dateComponents([.hour], from: fromDate, to: self).hour ?? 0
+    }
+    
+    func minutes(fromDate: Date) -> Int {
+        return Calendar.current.dateComponents([.minute], from: fromDate, to: self).minute ?? 0
+    }
+    
+    
 }
