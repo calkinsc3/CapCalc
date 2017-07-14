@@ -36,6 +36,7 @@ class SprintDateSelector: UIViewController {
             
             self.selectedStartDate = datePicker.minimumDate
             self.selectedEndDate = datePicker.maximumDate
+            
         }
 
         
