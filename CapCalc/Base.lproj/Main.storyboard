@@ -94,7 +94,6 @@
                                 </state>
                                 <connections>
                                     <action selector="calculateCapacity:" destination="9pv-A4-QxB" eventType="touchUpInside" id="vDK-ia-yTG"/>
-                                    <segue destination="Owh-0J-5T1" kind="show" identifier="calcCapSegue" id="JGY-jz-4IG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,6 +121,7 @@
                         <outlet property="dateSelector" destination="Dp9-YI-jiS" id="lyz-S2-bNz"/>
                         <outlet property="endDate" destination="XzT-Ym-Y45" id="ZxV-f0-bnB"/>
                         <outlet property="startDate" destination="74j-Hv-Scm" id="PjT-9p-cLn"/>
+                        <segue destination="Owh-0J-5T1" kind="show" identifier="calcCapSegue" id="MRO-O7-E3f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -213,7 +213,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cE-pN-lTH">
                                                     <rect key="frame" x="8" y="19" width="359" height="20.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Total Hours: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcT-tZ-phC">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Total Coding Hours: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcT-tZ-phC">
                                                             <rect key="frame" x="0.0" y="0.0" width="277" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -244,6 +244,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="zGv-uO-PEh"/>
+                    <connections>
+                        <outlet property="meetingHoursDisplay" destination="ZDW-fN-jI9" id="8Rl-ry-jcf"/>
+                        <outlet property="totalCapcityDisplay" destination="jci-gn-UBf" id="9iT-aT-CjY"/>
+                        <outlet property="totalCodingHoursDisplay" destination="zpa-s6-Tob" id="AGN-qR-fZo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqE-8o-Yh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

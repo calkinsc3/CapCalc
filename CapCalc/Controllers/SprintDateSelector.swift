@@ -20,6 +20,7 @@ class SprintDateSelector: UIViewController {
     var selectedFromStart = false
     private var selectedStartDate : Date?
     private var selectedEndDate : Date?
+    private var totalMeetingHours : Int = 0
     
 
     override func viewDidLoad() {
@@ -87,11 +88,12 @@ class SprintDateSelector: UIViewController {
         if let givenStartDate = self.selectedStartDate, let givenEndDate = self.selectedEndDate {
             let eventPredicate = EKEventStore().predicateForEvents(withStart: givenStartDate, end: givenEndDate, calendars: [givenCalendar])
             let workEvents = EKEventStore().events(matching: eventPredicate)
-            var totalHoursInMeetings = 0
             for event in workEvents {
-                totalHoursInMeetings += event.endDate.hours(fromDate: event.startDate)
+                self.totalMeetingHours += event.endDate.hours(fromDate: event.startDate)
             }
-            print("Total Hours in meetings = \(totalHoursInMeetings)")
+            if self.totalMeetingHours > 0 {
+                self.performSegue(withIdentifier: "calcCapSegue", sender: self)
+            }
         }
     }
     
@@ -99,8 +101,13 @@ class SprintDateSelector: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "calcCapSegue" {
+            if let capResultsController = segue.destination as? CapacityResultsController {
+                capResultsController.meetingHours = self.totalMeetingHours
+            }
+            
+        }
     }
 
 }

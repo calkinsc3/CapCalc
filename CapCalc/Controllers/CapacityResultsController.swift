@@ -10,14 +10,36 @@ import UIKit
 
 class CapacityResultsController: UITableViewController {
 
+    @IBOutlet weak var totalCapcityDisplay: UILabel!
+    @IBOutlet weak var meetingHoursDisplay: UILabel!
+    @IBOutlet weak var totalCodingHoursDisplay: UILabel!
+    
+    var meetingHours = 0
+    
+    var totalCapacity : Int = 0 {
+        didSet {
+            if let totalCap = self.totalCapcityDisplay {
+                totalCap.text = "\(self.totalCapacity) Hours"
+            }
+        }
+    }
+    var totalCodingHours : Int = 0 {
+        didSet {
+            if let totalCodingHoursLabel = self.totalCodingHoursDisplay {
+                totalCodingHoursLabel.text = "\(self.totalCodingHours) Hours"
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.totalCapacity = 85
+        
+        self.meetingHoursDisplay.text = "\(self.meetingHours) Hours"
+        self.totalCodingHours = self.totalCapacity - self.meetingHours
+        
     }
 
     override func didReceiveMemoryWarning() {
