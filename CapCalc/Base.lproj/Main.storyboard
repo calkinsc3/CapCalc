@@ -171,24 +171,24 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="LM6-lu-IG1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="LM6-lu-IG1">
                                         <rect key="frame" x="0.0" y="95" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LM6-lu-IG1" id="z59-tv-4DI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eym-Nq-Wgn">
-                                                    <rect key="frame" x="8" y="19" width="359" height="20.5"/>
+                                                    <rect key="frame" x="8" y="19" width="326" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Meeting Hours:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3N-IZ-PWy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="277" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="244" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37.5 Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDW-fN-jI9">
-                                                            <rect key="frame" x="277" y="0.0" width="82" height="20.5"/>
+                                                            <rect key="frame" x="244" y="0.0" width="82" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -202,6 +202,9 @@
                                                 <constraint firstItem="eym-Nq-Wgn" firstAttribute="centerY" secondItem="z59-tv-4DI" secondAttribute="centerY" id="lch-3z-aU2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="lyK-YZ-uU6" kind="show" identifier="showMeetingSegue" id="ZDh-1R-STn"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="F5e-g6-n3F">
                                         <rect key="frame" x="0.0" y="155" width="375" height="60"/>
@@ -235,6 +238,38 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="sbH-Va-tQE">
+                                        <rect key="frame" x="0.0" y="215" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sbH-Va-tQE" id="it6-yl-D0S">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yow-IV-sv9">
+                                                    <rect key="frame" x="8" y="19" width="359" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Coding Hours Per Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEg-9m-KqB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="277" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="37.5 Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69R-De-M1l">
+                                                            <rect key="frame" x="277" y="0.0" width="82" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="yow-IV-sv9" firstAttribute="centerY" secondItem="it6-yl-D0S" secondAttribute="centerY" id="NqD-0s-BWE"/>
+                                                <constraint firstItem="yow-IV-sv9" firstAttribute="leading" secondItem="it6-yl-D0S" secondAttribute="leadingMargin" id="eoR-LW-n8Y"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yow-IV-sv9" secondAttribute="trailing" id="yZf-Pd-Sh8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -245,6 +280,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="zGv-uO-PEh"/>
                     <connections>
+                        <outlet property="codingHoursPerDay" destination="69R-De-M1l" id="uDH-1D-Pgm"/>
                         <outlet property="meetingHoursDisplay" destination="ZDW-fN-jI9" id="8Rl-ry-jcf"/>
                         <outlet property="totalCapcityDisplay" destination="jci-gn-UBf" id="9iT-aT-CjY"/>
                         <outlet property="totalCodingHoursDisplay" destination="zpa-s6-Tob" id="AGN-qR-fZo"/>
@@ -253,6 +289,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqE-8o-Yh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3217" y="-322"/>
+        </scene>
+        <!--Meetings List-->
+        <scene sceneID="XPj-Va-HXu">
+            <objects>
+                <tableViewController id="lyK-YZ-uU6" customClass="MeetingsList" customModule="CapCalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="jTr-sW-Gxo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="meetingCell" rowHeight="100" id="t1t-EX-nUy" customClass="MeetingCell" customModule="CapCalc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t1t-EX-nUy" id="wn7-9F-rkQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="V0G-ca-hnc">
+                                            <rect key="frame" x="8" y="15" width="359" height="76.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQP-vy-sms">
+                                                    <rect key="frame" x="0.0" y="0.0" width="118.5" height="25.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSB-h4-Ibp">
+                                                    <rect key="frame" x="0.0" y="30.5" width="75" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIj-1S-qgn">
+                                                    <rect key="frame" x="0.0" y="56" width="87.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="V0G-ca-hnc" firstAttribute="leading" secondItem="wn7-9F-rkQ" secondAttribute="leadingMargin" id="WNz-JL-2b0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="V0G-ca-hnc" secondAttribute="trailing" id="afK-Fl-s6R"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="V0G-ca-hnc" secondAttribute="bottom" id="edS-Mu-S81"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="meetingTitle" destination="NQP-vy-sms" id="ULZ-4U-w5h"/>
+                                    <outlet property="organizer" destination="aSB-h4-Ibp" id="grI-vS-1sW"/>
+                                    <outlet property="totalHours" destination="qIj-1S-qgn" id="L0m-j2-prs"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lyK-YZ-uU6" id="KeI-8g-JQX"/>
+                            <outlet property="delegate" destination="lyK-YZ-uU6" id="7R5-wP-O1p"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xkA-Wg-7c4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4288.8000000000002" y="-322.48875562218893"/>
         </scene>
         <!--Calendar Selector-->
         <scene sceneID="wrN-Dy-ULJ">

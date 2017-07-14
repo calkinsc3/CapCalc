@@ -37,6 +37,14 @@ class SprintDateSelector: UIViewController {
             self.selectedStartDate = datePicker.minimumDate
             self.selectedEndDate = datePicker.maximumDate
             
+            if let displayStartDate = self.selectedStartDate?.shortDateForDisplay() {
+                self.startDate.setTitle(displayStartDate, for: .normal)
+            }
+            
+            if let displayEndDate = self.selectedEndDate?.shortDateForDisplay() {
+                self.endDate.setTitle(displayEndDate, for: .normal)
+            }
+
         }
 
         
@@ -114,6 +122,10 @@ class SprintDateSelector: UIViewController {
         if segue.identifier == "calcCapSegue" {
             if let capResultsController = segue.destination as? CapacityResultsController {
                 capResultsController.meetingHours = self.totalMeetingHours
+                if let givenStartDate = self.selectedStartDate, let givenEndDate = self.selectedEndDate {
+                    capResultsController.eventDateRange = (givenStartDate, givenEndDate)
+                }
+                capResultsController.selectedCalendar = self.selectedCalendar
             }
             
         }
@@ -136,6 +148,14 @@ extension Date {
     
     func minutes(fromDate: Date) -> Int {
         return Calendar.current.dateComponents([.minute], from: fromDate, to: self).minute ?? 0
+    }
+    
+    func shortDateForDisplay() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        return dateFormatter.string(from: self)
     }
     
     

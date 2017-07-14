@@ -18,6 +18,9 @@
 		9465BDAB1F124C45001C7E5A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9465BDAA1F124C32001C7E5A /* EventKit.framework */; };
 		9465BDAF1F124DCA001C7E5A /* SprintDateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465BDAE1F124DCA001C7E5A /* SprintDateSelector.swift */; };
 		9465BDB41F124E59001C7E5A /* CapacityResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465BDB31F124E59001C7E5A /* CapacityResultsController.swift */; };
+		94E74C321F18D757002C3573 /* MeetingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E74C311F18D757002C3573 /* MeetingsList.swift */; };
+		94E74C341F18D7F7002C3573 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E74C331F18D7F7002C3573 /* MeetingCell.swift */; };
+		94E74C381F18D907002C3573 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E74C371F18D907002C3573 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		9465BDAA1F124C32001C7E5A /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		9465BDAE1F124DCA001C7E5A /* SprintDateSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprintDateSelector.swift; sourceTree = "<group>"; };
 		9465BDB31F124E59001C7E5A /* CapacityResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapacityResultsController.swift; sourceTree = "<group>"; };
+		94E74C311F18D757002C3573 /* MeetingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingsList.swift; sourceTree = "<group>"; };
+		94E74C331F18D7F7002C3573 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
+		94E74C371F18D907002C3573 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,8 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				9465BD791F124BF4001C7E5A /* AppDelegate.swift */,
-				945E9DFF1F13962400110FDF /* Extensions.swift */,
 				9465BD871F124BF4001C7E5A /* Info.plist */,
+				94E74C361F18D8D5002C3573 /* Supporting Files */,
 				9465BDB21F124E05001C7E5A /* Controllers */,
 				9465BDAC1F124D72001C7E5A /* View */,
 			);
@@ -145,6 +151,7 @@
 		9465BDAC1F124D72001C7E5A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				94E74C351F18D7FE002C3573 /* Cells */,
 				9465BD7F1F124BF4001C7E5A /* Main.storyboard */,
 				9465BD821F124BF4001C7E5A /* Assets.xcassets */,
 				9465BD841F124BF4001C7E5A /* LaunchScreen.storyboard */,
@@ -158,8 +165,26 @@
 				945E9DFD1F13934C00110FDF /* CalendarSelector.swift */,
 				9465BDAE1F124DCA001C7E5A /* SprintDateSelector.swift */,
 				9465BDB31F124E59001C7E5A /* CapacityResultsController.swift */,
+				94E74C311F18D757002C3573 /* MeetingsList.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		94E74C351F18D7FE002C3573 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				94E74C331F18D7F7002C3573 /* MeetingCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		94E74C361F18D8D5002C3573 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				945E9DFF1F13962400110FDF /* Extensions.swift */,
+				94E74C371F18D907002C3573 /* Constants.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,11 +319,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94E74C341F18D7F7002C3573 /* MeetingCell.swift in Sources */,
 				945E9E001F13962400110FDF /* Extensions.swift in Sources */,
 				945E9DFE1F13934C00110FDF /* CalendarSelector.swift in Sources */,
 				9465BDAF1F124DCA001C7E5A /* SprintDateSelector.swift in Sources */,
 				9465BD7A1F124BF4001C7E5A /* AppDelegate.swift in Sources */,
 				9465BDB41F124E59001C7E5A /* CapacityResultsController.swift in Sources */,
+				94E74C321F18D757002C3573 /* MeetingsList.swift in Sources */,
+				94E74C381F18D907002C3573 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

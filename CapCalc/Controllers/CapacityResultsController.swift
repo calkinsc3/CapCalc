@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import EventKit
 
 class CapacityResultsController: UITableViewController {
 
     @IBOutlet weak var totalCapcityDisplay: UILabel!
     @IBOutlet weak var meetingHoursDisplay: UILabel!
     @IBOutlet weak var totalCodingHoursDisplay: UILabel!
+    @IBOutlet weak var codingHoursPerDay: UILabel!
+    
+    var selectedCalendar : EKCalendar?
+    var eventDateRange : eventDateRange?
     
     var meetingHours = 0
+    let hoursPerDay = 8 //TODO:- make this a setting
     
     var totalCapacity : Int = 0 {
         didSet {
@@ -30,15 +36,24 @@ class CapacityResultsController: UITableViewController {
             }
         }
     }
+    var codingHourByDay: Int = 0 {
+        didSet {
+            if let codingPerDayLabel = self.codingHoursPerDay {
+                codingPerDayLabel.text = "\(self.codingHourByDay) Hours"
+            }
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.totalCapacity = 85
+        self.totalCapacity = 85 //TODO:- make this a setting
         
         self.meetingHoursDisplay.text = "\(self.meetingHours) Hours"
         self.totalCodingHours = self.totalCapacity - self.meetingHours
+        
+        self.codingHourByDay = self.totalCodingHours / self.hoursPerDay
         
     }
 
@@ -56,62 +71,30 @@ class CapacityResultsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showMeetingSegue" {
+            if let showMeetingContoller = segue.destination as? MeetingsList {
+                showMeetingContoller.selectedCalendar = self.selectedCalendar
+                showMeetingContoller.eventDateRange = self.eventDateRange
+            }
+            
+        }
+        
     }
-    */
+    
 
 }

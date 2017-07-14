@@ -16,51 +16,26 @@ class CalendarSelector: UITableViewController {
     var isAcessToEventStoreGranted = false
     
     var calendars: [EKCalendar]?
-
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //get permission to use the event store for the calendar data
         self.eventStore = EKEventStore()
         self.updateAuthorizationStatusToAccessEventStore()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateAuthorizationStatusToAccessEventStore()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - TableView
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let calendars = self.calendars {
-            return calendars.count
-        }
-        return 0
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath)
-        
-        if let calendars = self.calendars {
-            cell.textLabel?.text = calendars[indexPath.row].title
-        } else {
-            cell.textLabel?.text = "Unknown Calendar"
-        }
-
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
     }
     
     //MARK:- Helper Functions
@@ -112,7 +87,38 @@ class CalendarSelector: UITableViewController {
         })
         
     }
-
+    
+    // MARK: - TableView
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let calendars = self.calendars {
+            return calendars.count
+        }
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCell", for: indexPath)
+        
+        if let calendars = self.calendars {
+            cell.textLabel?.text = calendars[indexPath.row].title
+        } else {
+            cell.textLabel?.text = "Unknown Calendar"
+        }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -130,5 +136,5 @@ class CalendarSelector: UITableViewController {
         
         
     }
-
+    
 }
