@@ -50,12 +50,20 @@ class SprintDateSelector: UIViewController {
         if self.dateSelector.isHidden {
             self.dateSelector.isHidden = false
         }
+        
+        if let startDate = self.selectedStartDate {
+            self.dateSelector.setDate(startDate, animated: true)
+        }
     }
     
     @IBAction func endDateSelected(_ sender: UIButton) {
         self.selectedFromStart = false
         if self.dateSelector.isHidden {
             self.dateSelector.isHidden = false
+        }
+        
+        if let endDate = self.selectedEndDate {
+            self.dateSelector.setDate(endDate, animated: true)
         }
     }
     
@@ -75,9 +83,7 @@ class SprintDateSelector: UIViewController {
             self.selectedEndDate = sender.date
         }
         
-        
     }
-    
     
     @IBAction func calculateCapacity(_ sender: UIButton) {
         
@@ -86,11 +92,13 @@ class SprintDateSelector: UIViewController {
         }
         
         if let givenStartDate = self.selectedStartDate, let givenEndDate = self.selectedEndDate {
+            self.totalMeetingHours = 0 //reset the meeting hours
             let eventPredicate = EKEventStore().predicateForEvents(withStart: givenStartDate, end: givenEndDate, calendars: [givenCalendar])
             let workEvents = EKEventStore().events(matching: eventPredicate)
             for event in workEvents {
                 self.totalMeetingHours += event.endDate.hours(fromDate: event.startDate)
             }
+            
             if self.totalMeetingHours > 0 {
                 self.performSegue(withIdentifier: "calcCapSegue", sender: self)
             }
