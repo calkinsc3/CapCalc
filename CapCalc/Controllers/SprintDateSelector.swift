@@ -76,7 +76,7 @@ class SprintDateSelector: UIViewController {
         }
     }
     
-    func displayDateSelected(sender:UIDatePicker) {
+    @objc func displayDateSelected(sender:UIDatePicker) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
