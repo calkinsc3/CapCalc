@@ -9,3 +9,4 @@
 import Foundation
 
 typealias eventDateRange = (startDate: Date, endDate: Date)
+let calendarKeyID = "SelectedCalendarID"

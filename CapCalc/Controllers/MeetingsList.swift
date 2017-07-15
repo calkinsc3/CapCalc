@@ -72,7 +72,8 @@ class MeetingsList: UITableViewController {
             let givenDateRange = self.eventDateRange {
             
             let eventPredicate = EKEventStore().predicateForEvents(withStart: givenDateRange.startDate, end: givenDateRange.endDate, calendars: [givenCalendar])
-            self.events = EKEventStore().events(matching: eventPredicate)
+            //if the meeting is greater that hour then sort from start date.
+            self.events = EKEventStore().events(matching: eventPredicate).filter{$0.endDate.hours(fromDate: $0.startDate) > 0}.sorted{$0.startDate < $1.startDate}
             self.reloadData()
         }
     }

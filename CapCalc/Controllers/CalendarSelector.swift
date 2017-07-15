@@ -16,6 +16,7 @@ class CalendarSelector: UITableViewController {
     var isAcessToEventStoreGranted = false
     
     var calendars: [EKCalendar]?
+    var selectedCalendar : EKCalendar?
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -25,7 +26,16 @@ class CalendarSelector: UITableViewController {
         
         //get permission to use the event store for the calendar data
         self.eventStore = EKEventStore()
-        self.updateAuthorizationStatusToAccessEventStore()
+        
+        //check if there already a calendar store
+        if let selectedCalID = UserDefaults.standard.string(forKey: calendarKeyID) {
+            self.selectedCalendar = self.eventStore?.calendar(withIdentifier: selectedCalID)
+            self.performSegue(withIdentifier: "dateSelectionSegue", sender: self)
+        } else {
+            self.updateAuthorizationStatusToAccessEventStore()
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,12 +116,17 @@ class CalendarSelector: UITableViewController {
         
         if let calendars = self.calendars {
             cell.textLabel?.text = calendars[indexPath.row].title
+            if self.selectedCalendar?.calendarIdentifier == calendars[indexPath.row].calendarIdentifier {
+                cell.accessoryType = .checkmark
+            }
         } else {
             cell.textLabel?.text = "Unknown Calendar"
         }
         
         return cell
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
@@ -123,18 +138,27 @@ class CalendarSelector: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
         if segue.identifier == "dateSelectionSegue" {
             //get the selected calendar and pass it to the date selction
-            if let selectedRowIndex = self.tableView.indexPathForSelectedRow,
-                let calendars = self.calendars,
+            if let previouslySelectedCalendar = self.selectedCalendar,
                 let sprintDateSelectionController = segue.destination as? SprintDateSelector {
-                //pass the selected calendar
-                sprintDateSelectionController.selectedCalendar = calendars[selectedRowIndex.row]
                 
+                sprintDateSelectionController.selectedCalendar = previouslySelectedCalendar
+            } else {
+                
+                if let selectedRowIndex = self.tableView.indexPathForSelectedRow,
+                    let calendars = self.calendars,
+                    let sprintDateSelectionController = segue.destination as? SprintDateSelector {
+                    //pass the selected calendar
+                    sprintDateSelectionController.selectedCalendar = calendars[selectedRowIndex.row]
+                    //record the selected calendar
+                    UserDefaults.standard.set(calendars[selectedRowIndex.row].calendarIdentifier, forKey: calendarKeyID)
+                    UserDefaults.standard.synchronize()
+                }
             }
         }
-        
-        
     }
     
 }
