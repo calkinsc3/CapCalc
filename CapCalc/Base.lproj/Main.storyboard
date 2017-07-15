@@ -278,7 +278,9 @@
                             <outlet property="delegate" destination="Owh-0J-5T1" id="Bhk-dr-Xpk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="zGv-uO-PEh"/>
+                    <navigationItem key="navigationItem" id="zGv-uO-PEh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="1jK-6h-XhE"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="codingHoursPerDay" destination="69R-De-M1l" id="uDH-1D-Pgm"/>
                         <outlet property="meetingHoursDisplay" destination="ZDW-fN-jI9" id="8Rl-ry-jcf"/>

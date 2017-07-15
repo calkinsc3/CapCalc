@@ -54,6 +54,7 @@ class CapacityResultsController: UITableViewController {
         self.totalCodingHours = self.totalCapacity - self.meetingHours
         
         self.codingHourByDay = self.totalCodingHours / self.hoursPerDay
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: Selector("sendEmailWithCapacity"))
         
     }
 
@@ -78,6 +79,21 @@ class CapacityResultsController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    
+    //MARK:- Actions
+    @objc func sendEmailWithCapacity() {
+        //gather a screen shot
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenShot = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //let sharedItems = ["Total Coding Hour", "\(self.totalCodingHours)", "Total Coding Hour Per Day", "\(self.codingHourByDay)"]
+        let sharedItems = [screenShot as? UIImage]
+        let activityAlert = UIActivityViewController(activityItems: sharedItems, applicationActivities: nil)
+        self.present(activityAlert, animated: true, completion: nil)
+    }
+    
 
     
     // MARK: - Navigation
