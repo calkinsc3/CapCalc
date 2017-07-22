@@ -15,6 +15,8 @@ class CalendarSelector: UITableViewController {
     var eventStore: EKEventStore?
     var isAcessToEventStoreGranted = false
     
+    var unwindToSettings = false
+    
     var calendars: [EKCalendar]?
     var selectedCalendar : EKCalendar?
     
@@ -41,6 +43,11 @@ class CalendarSelector: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateAuthorizationStatusToAccessEventStore()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.unwindToSettings = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,6 +133,16 @@ class CalendarSelector: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if self.unwindToSettings {
+            self.performSegue(withIdentifier: "calUnwindToSettings", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "dateSelectionSegue", sender: self)
+        }
+        
+    }
+    
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -138,7 +155,9 @@ class CalendarSelector: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+        if segue.identifier == "calUnwindToSettings" {
+            
+        }
         
         if segue.identifier == "dateSelectionSegue" {
             //get the selected calendar and pass it to the date selction

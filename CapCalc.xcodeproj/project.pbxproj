@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9454A2001F2373F00037AFF0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9454A1FF1F2373F00037AFF0 /* Settings.swift */; };
 		945E9DFE1F13934C00110FDF /* CalendarSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E9DFD1F13934C00110FDF /* CalendarSelector.swift */; };
 		945E9E001F13962400110FDF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945E9DFF1F13962400110FDF /* Extensions.swift */; };
 		9465BD7A1F124BF4001C7E5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9465BD791F124BF4001C7E5A /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9454A1FF1F2373F00037AFF0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		945E9DFD1F13934C00110FDF /* CalendarSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarSelector.swift; sourceTree = "<group>"; };
 		945E9DFF1F13962400110FDF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9465BD761F124BF4001C7E5A /* CapCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,7 @@
 				9465BDAE1F124DCA001C7E5A /* SprintDateSelector.swift */,
 				9465BDB31F124E59001C7E5A /* CapacityResultsController.swift */,
 				94E74C311F18D757002C3573 /* MeetingsList.swift */,
+				9454A1FF1F2373F00037AFF0 /* Settings.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				9465BDAF1F124DCA001C7E5A /* SprintDateSelector.swift in Sources */,
 				9465BD7A1F124BF4001C7E5A /* AppDelegate.swift in Sources */,
 				9465BDB41F124E59001C7E5A /* CapacityResultsController.swift in Sources */,
+				9454A2001F2373F00037AFF0 /* Settings.swift in Sources */,
 				94E74C321F18D757002C3573 /* MeetingsList.swift in Sources */,
 				94E74C381F18D907002C3573 /* Constants.swift in Sources */,
 			);
