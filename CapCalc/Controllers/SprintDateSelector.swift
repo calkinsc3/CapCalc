@@ -105,9 +105,14 @@ class SprintDateSelector: UIViewController {
             let eventPredicate = EKEventStore().predicateForEvents(withStart: givenStartDate, end: givenEndDate, calendars: [givenCalendar])
             let workEvents = EKEventStore().events(matching: eventPredicate)
             for event in workEvents {
-                let meetingHours = event.endDate.hours(fromDate: event.startDate)
-                if meetingHours > 0 {
-                    self.totalMeetingHours += meetingHours
+                if !event.isAllDay {
+                    let meetingHours = event.endDate.hours(fromDate: event.startDate)
+                    if meetingHours > 0 {
+                        self.totalMeetingHours += meetingHours
+                    }
+                } else {
+                    //if it an all day event just add 8
+                    self.totalMeetingHours += 8
                 }
             }
             
