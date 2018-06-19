@@ -26,7 +26,7 @@ class SprintDateSelector: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //get changes from the date picker
-        self.dateSelector.addTarget(self, action: #selector(SprintDateSelector.displayDateSelected(sender:)), for: .valueChanged)
+        self.dateSelector.addTarget(self, action: #selector(SprintDateSelector.displayDateSelected(sender:)), for: UIControl.Event.valueChanged)
         
         //set the min and max dates for the date picker
         if let datePicker = self.dateSelector {
@@ -38,11 +38,11 @@ class SprintDateSelector: UIViewController {
             self.selectedEndDate = datePicker.maximumDate
             
             if let displayStartDate = self.selectedStartDate?.shortDateForDisplay() {
-                self.startDate.setTitle(displayStartDate, for: .normal)
+                self.startDate.setTitle(displayStartDate, for: UIControl.State.normal)
             }
             
             if let displayEndDate = self.selectedEndDate?.shortDateForDisplay() {
-                self.endDate.setTitle(displayEndDate, for: .normal)
+                self.endDate.setTitle(displayEndDate, for: UIControl.State.normal)
             }
 
         }
@@ -84,11 +84,11 @@ class SprintDateSelector: UIViewController {
         
         if self.selectedFromStart {
             //update the start date button
-            self.startDate.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+            self.startDate.setTitle(dateFormatter.string(from: sender.date), for: UIControl.State.normal)
             self.selectedStartDate = sender.date
         } else {
             //update the end date button
-            self.endDate.setTitle(dateFormatter.string(from: sender.date), for: .normal)
+            self.endDate.setTitle(dateFormatter.string(from: sender.date), for: UIControl.State.normal)
             self.selectedEndDate = sender.date
         }
         

@@ -54,7 +54,7 @@ class CapacityResultsController: UITableViewController {
         self.totalCodingHours = self.totalCapacity - self.meetingHours
         
         self.codingHourByDay = self.totalCodingHours / self.hoursPerDay
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: Selector("sendEmailWithCapacity"))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(CapacityResultsController.sendEmailWithCapacity))
         
     }
 
